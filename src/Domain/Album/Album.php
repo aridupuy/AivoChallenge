@@ -74,7 +74,7 @@ class Album implements JsonSerializable {
         return $this->name;
     }
 
-    function getTracks(): integer {
+    function getTracks() {
         return $this->tracks;
     }
 

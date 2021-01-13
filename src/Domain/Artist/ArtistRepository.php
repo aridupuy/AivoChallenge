@@ -15,15 +15,11 @@ namespace App\Domain\Artist;
 
 interface ArtistRepository
 {
+    
     /**
-     * @return User[]
+     * @param String $bandName
+     * @return Artist
+     * @throws ArtistNotFoundException
      */
-    public function findAll(): array;
-
-    /**
-     * @param int $id
-     * @return User
-     * @throws UserNotFoundException
-     */
-    public function findAlbumsOfBandName(String $bandName): Artist;
+    public function findArtistOfBandName(String $bandName): Artist;
 }

@@ -30,7 +30,7 @@ class InApiAlbumRepository implements AlbumsRepository {
 
     private function authenticate() {
         /* Este access token puede que expire pero como este se genera en base a mi cuenta personal prefiero por este caso dejarlo hardcodeado */
-        $this->accessToken = "Bearer BQC1Kq2Vz8vIqA-Jw5TmlctIo6VyxUfYJTN61B34J4SMV6adcnHRK-89TEMkQspAIBFv9XD3GHzxTsQ66IRYNLnfT7vaTo2PjZhQBzZcAN7K8XOfzuRFNN0024OuJnFYV-JAXso7RTeA3oxMxEbuyg";
+        $this->accessToken = "Bearer BQAWnfXdgW9HRxY8VpPGTed0W4-GPX3FlR2Ow69qZGEb0IyyBxyXZ5kaNTVrM-RffMPjAg5tLu_BQYPcB9JTuprDhnrbm3D9Qb-axZwEdGl1Gjjz73_H86Ci223eZwUnViOoZEIbknoRqL0tvfC24Q";
     }
 
     /**

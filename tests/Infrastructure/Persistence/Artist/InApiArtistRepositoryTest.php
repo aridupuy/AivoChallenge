@@ -2,51 +2,30 @@
 declare(strict_types=1);
 
 namespace Tests\Infrastructure\Persistence\Artist;
+require __DIR__.'/../../../bootstrap.php';
 use App\Domain\Artist\Artist;
-use App\Domain\Artist\ArtistNotFoundException;
 use App\Infrastructure\Persistence\Artist\InApiArtistRepository;
-//use Tests\MyTestCase;
+use Tests\TestCase;
 
-class InApiArtistRepositoryTest extends MyTestCase
+class InApiArtistRepositoryTest extends TestCase
 {
-    public function testFindAll()
+     public function testFindArtistOfBandName()
     {
-        $user = new User(1, 'bill.gates', 'Bill', 'Gates');
+       
+        $artist = new Artist("0L8ExT028jH3ddEcZwqJJ5", "https://i.scdn.co/image/89bc3c14aa2b4f250033ffcf5f322b2a553d9331", "red_hot_chili_peppers");
 
-        $userRepository = new InMemoryUserRepository([1 => $user]);
+        $userRepository = new InApiArtistRepository();
+        $bandName = "red hot chili peppers";
+        $searchedArtist = $userRepository->findArtistOfBandName($bandName);
+        
+        $this->assertEquals($artist ->getId(), $searchedArtist->getId());
+        $this->assertEquals($artist ->getId(), $searchedArtist->getId());
+        $this->assertNotEquals($bandName, $searchedArtist->getName());
+        $this->assertEquals(strtolower(str_replace(" ", "_", $bandName)), $searchedArtist->getName());
 
-        $this->assertEquals([$user], $userRepository->findAll());
     }
+    
 
-    public function testFindAllUsersByDefault()
-    {
-        $users = [
-            1 => new User(1, 'bill.gates', 'Bill', 'Gates'),
-            2 => new User(2, 'steve.jobs', 'Steve', 'Jobs'),
-            3 => new User(3, 'mark.zuckerberg', 'Mark', 'Zuckerberg'),
-            4 => new User(4, 'evan.spiegel', 'Evan', 'Spiegel'),
-            5 => new User(5, 'jack.dorsey', 'Jack', 'Dorsey'),
-        ];
-
-        $userRepository = new InMemoryUserRepository();
-
-        $this->assertEquals(array_values($users), $userRepository->findAll());
-    }
-
-    public function testFindUserOfId()
-    {
-        $user = new User(1, 'bill.gates', 'Bill', 'Gates');
-
-        $userRepository = new InMemoryUserRepository([1 => $user]);
-
-        $this->assertEquals($user, $userRepository->findUserOfId(1));
-    }
-
-    public function testFindUserOfIdThrowsNotFoundException()
-    {
-        $userRepository = new InMemoryUserRepository([]);
-        $this->expectException(UserNotFoundException::class);
-        $userRepository->findUserOfId(1);
-    }
+   
   
 }
