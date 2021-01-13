@@ -5,9 +5,9 @@ namespace Tests\Infrastructure\Persistence\Artist;
 use App\Domain\Artist\Artist;
 use App\Domain\Artist\ArtistNotFoundException;
 use App\Infrastructure\Persistence\Artist\InApiArtistRepository;
-use Tests\TestCase;
+//use Tests\MyTestCase;
 
-class InApiArtistRepositoryTest extends TestCase
+class InApiArtistRepositoryTest extends MyTestCase
 {
     public function testFindAll()
     {
